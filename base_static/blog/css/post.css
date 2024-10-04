@@ -1,0 +1,126 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e9f1fa; /* Fundo azul claro */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    color: #007bff; /* Título azul */
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+input[type="text"],
+textarea,
+.select2-container,
+.select1 {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #007bff; /* Borda azul */
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+.select1:focus {
+    border-color: #0056b3; /* Azul mais escuro ao focar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+textarea {
+    height: 180px;
+    resize: vertical;
+}
+
+button {
+    background-color: #007bff; /* Azul */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.select2-container,
+.select1 {
+    height: auto;
+}
+
+.select2-container--default .select2-selection--single,
+.select1 {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select1 option {
+    padding: 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 38px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .select1 {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

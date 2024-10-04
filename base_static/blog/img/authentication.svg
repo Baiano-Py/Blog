@@ -1,0 +1,50 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="635.4" height="597.01" viewBox="0 0 635.4 597.01">
+  <defs>
+    <linearGradient id="linear-gradient" x1="95.1" y1="375.4" x2="729" y2="375.4" gradientTransform="translate(-95.1 -170)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#333"/>
+      <stop offset="1" stop-color="#444"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="4.71" y1="290.92" x2="969.31" y2="487.8" gradientTransform="translate(-95.1 -170)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="40.96" y1="226.9" x2="1173.8" y2="203.99" gradientTransform="translate(-95.1 -170)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-opacity="0"/>
+      <stop offset="0.91" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#111"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="313.9" y1="340" x2="117.26" y2="414.2" gradientTransform="translate(0 -170)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-5" x1="353.33" y1="120.4" x2="322.92" y2="380.28" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-6" x1="299.94" y1="340.36" x2="402.51" y2="340.69" gradientTransform="translate(0 -170)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-7" x1="329.49" y1="117.61" x2="299.08" y2="377.49" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-8" x1="332.98" y1="418.71" x2="366.51" y2="329.01" gradientTransform="translate(0 -170)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-9" x1="383.62" y1="410.51" x2="358.16" y2="321.74" gradientTransform="translate(0 -170)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-10" x1="371.63" y1="340.23" x2="244.49" y2="521.29" gradientTransform="translate(0 -170)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-11" x1="385.52" y1="349.98" x2="258.38" y2="531.05" gradientTransform="translate(0 -170)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-12" x1="520.27" y1="443.89" x2="770.92" y2="679.88" gradientTransform="translate(-95.1 -170)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-opacity="0"/>
+      <stop offset="0.02" stop-color="#000" stop-opacity="0.04"/>
+      <stop offset="0.18" stop-color="#111" stop-opacity="0.39"/>
+      <stop offset="0.35" stop-color="#222" stop-opacity="0.66"/>
+      <stop offset="0.53" stop-color="#333" stop-opacity="0.85"/>
+      <stop offset="0.73" stop-color="#444" stop-opacity="0.96"/>
+      <stop offset="0.99" stop-color="#555"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-13" x1="643.36" y1="504.69" x2="429.63" y2="567.8" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-14" x1="477.51" y1="483.15" x2="507.96" y2="483.15" gradientTransform="translate(-95.1 -170)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#333"/>
+      <stop offset="0.42" stop-color="#444"/>
+      <stop offset="1" stop-color="#555"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-15" x1="492.28" y1="411.8" x2="492.77" y2="398.78" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-16" x1="486.41" y1="446.32" x2="513.62" y2="445.83" gradientTransform="translate(0 -170)" xlink:href="#linear-gradient-14"/>
+    <linearGradient id="linear-gradient-17" x1="583.1" y1="441.91" x2="577.49" y2="444.87" xlink:href="#linear-gradient-14"/>
+    <linearGradient id="linear-gradient-18" x1="595.75" y1="503.25" x2="525" y2="475.55" xlink:href="#linear-gradient-2"/>
+    <linearGradient id="linear-gradient-19" x1="470.75" y1="26.11" x2="474.88" y2="7.9" gradientTransform="matrix(1, 0, 0, -1, 0, 598)" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-20" x1="502.09" y1="21.16" x2="505.29" y2="2.21" gradientTransform="matrix(1, 0, 0, -1, 0, 598)" xlink:href="#linear-gradient-3"/>
+  </defs>
+  <title>authentication</title>
+  <path d="M372.34,589.54c6.45,2.66,13.58,3.05,20.54,3.38Q481,597.17,569.22,597c5.88,0,11.89-.06,17.4-2.1s10.5-6.52,11.47-12.32c-36.83-2.86-73.92-2.58-110.62-3.94-19.24-.71-39.22,1.7-58.36,3.53q-14.55,1.4-29.05,3.28C394,586.24,377.75,591.77,372.34,589.54Z" transform="translate(0 0)" fill="#111" opacity="0.18" style="isolation: isolate"/>
+  <path d="M487.37,571.45l4.53,11.13-18.3,8.66-16.9,1.23s-2.89-11.13,5-12.12a27.22,27.22,0,0,0,12.78-4.94Z" transform="translate(0 0)" fill="#b34d3b"/>
+  <path d="M501.9,576.48h0a13.73,13.73,0,0,0,7.34,7.52c5.14,3.2,11.27,2.15,15.54-2.52s4.55-12.1-3.61-16.3a9.53,9.53,0,0,0-7.34-1.79,8.26,8.26,0,0,0-6.26,5.26,8.73,8.73,0,0,0,1.41,9.61c5.45,6.08,16.6,6.59,22.6-.71s7.28-16.65-1.28-21.57a11.61,11.61,0,0,0-9.59-2.68,12.07,12.07,0,0,0-8.48,5.7c-5.88,8.31,3.53,15.16,8.26,21.68,2.43,3.15,5.18,6.49,8.77,8.76a16.28,16.28,0,0,0,7.45,1.32,17.84,17.84,0,0,0,12.51-8.79C515.43,579.95,506.73,576.49,501.9,576.48Z" transform="translate(0 0)" fill="#b34d3b"/>
+  <path d="M514.21,586.39c.87.51,1.55,1.12,2.17,1.86a7.63,7.63,0,0,1,1.54,2.66c1.6.56,3.24.73,4.87,1.06s3.24,1.23,4.7,2.05c.2.19.41.39.62.59s.42.4.6.61a9.66,9.66,0,0,0,2.67,2.52c.71.41,1.46.75,2.17,1.17,4.16.81,8.19,1.66,12.28,2.21,5.16.81,10.4,1.61,15.65,2.3,5.85.71,11.69,1.31,17.55,1.84s11.71,1.24,17.57,1.9a34.17,34.17,0,0,0,7.59-.15c4.5-1.73,8.87-4.41,12.72-7.29s7.53-6.6,10.43-10.58c3.45-4.72,6.67-9.77,9.46-14.8s5.3-10.21,8.52-15.3,6.71-10.82,11.48-15.48c.65-1.11,1.4-2.19,2.23-3.22s1.7-1.76,2.73-2.39,2.14-1.06,3.31-1.43,2.48-.8,3.77-1.05c1.75-.3,3.55-.1,5.29.47,1.77.59,3.39,1.39,4.92,2.32s2.84,2.27,4,3.66a19.65,19.65,0,0,1,4.35,8.46c1.21,3.56,1.78,7.18,1.91,10.84s-.22,7.17-1.25,10.63a30.26,30.26,0,0,1-3.89,6.6c-2.27,3.08-4.89,5.7-8,8.19-2.64,2.34-5.67,4.46-8.66,6.37-3.63,2.06-7.54,3.75-11.36,5.17-4.76,1.39-9.47,2.63-14.2,3.73a157.37,157.37,0,0,1-15.42,1.47c-4.94,0-9.85-1.51-14.62-2.89-5.78-1.73-11.73-2.96-17.6-4.39a71.92,71.92,0,0,0-14.82-1.73c-7.46.54-14.53,1.58-21.55,3.19a142.31,142.31,0,0,0-16.27,5.15c-3.94,1.46-7.93,3.06-11.77,4.74-5.34,2.2-10.83,4.38-16.33,6.08-6.26,1.88-12.62,3.56-18.9,4.66a24.69,24.69,0,0,1-6.6,0c-3.2-.54-6.48-1.07-9.61-1.88-4.39-1.09-8.8-2.34-13.23-3.4s-8.76-2.45-13.12-3.16c-5.08-.77-10.24-1.23-15.34-1.59a39.78,39.78,0,0,0-11.82,1.8,56.35,56.35,0,0,0-16.5,8.1,87.41,87.41,0,0,0-13.31,14.57,48.61,48.61,0,0,0-7.21,13.1c-1.34,4.59-2.15,9.15-2.9,13.76a77.08,77.08,0,0,0-.27,11.62,106.16,106.16,0,0,0,7.22,34.82c4.48,11.87,11.18,22.61,19.59,32.09,7.83,8.94,16.93,17.51,26.16,24.86s21.73,14.57,33.66,21.27a156.74,156.74,0,0,0,28.32,6.89c8.54,0,17.3-2.14,24.1-7.14,8.91-5.54,16.21-14.18,20.39-23.94a62.63,62.63,0,0,0,4.81-10.95c4.91-14.64,7.35-29.74,7.67-45.12a59.55,59.55,0,0,0-2.59-17.57c-2.66-9.79-7.3-18.72-13.53-26.43-6.86-9.38-15.51-17.24-25.48-24.14s-20.3-12.78-30.73-17.86c-12.53-5.93-23.71-14.7-34.26-24.49-13.79-12.72-25.09-27.09-33.3-43.43-5.88-10.52-10.56-21.53-12.89-33.48-2.82-11.94-4.1-23.97-4.61-36.06-.57-13.59.69-27.18,4.55-39.97s11.3-22.58,22.8-30.16c9.74-6.76,20.93-10.86,32.27-15.31,10.23-4.1,20.78-7.8,31.37-11.15a118.46,118.46,0,0,1,15.8-3.54c8.59-.65,16.9,3.32,23.58,8.88,7.8,6.17,12.46,15.29,14.48,24.77,2.27,10.91,3.33,21.94,3.89,33.19a37.36,37.36,0,0,1-1.7,14.56c-2.53,7.87-6.52,15.21-11.52,21.91-4.94,

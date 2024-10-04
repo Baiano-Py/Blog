@@ -1,0 +1,121 @@
+{% load static %}<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <!-- Custom styles-path -->
+    <link rel="stylesheet" href="{% static "blog/css/register.css" %}">
+
+    <!-- Font Awesome kit script -->
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+    <!-- Google Fonts Open Sans-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static "blog/img/html-5.png" %}">
+</head>
+
+<body>
+    <img class="wave" src="{% static "blog/img/wave.svg" %}">
+    <div class="container">
+        <div class="img">
+        </div>
+        <div class="login-container" style="margin-right: 450px; " >
+            <form action="{% url "blog:register" %}", method="POST">
+                {% csrf_token %}
+                <h2>Cadastre-se</h2>
+                <p>Entrar com:</p>
+                <div class="social">
+                    <div class="social-icons facebook">
+                        <a href="#"><img src="{% static "blog/img/facebook.png" %}">Entrar com o Facebook</a>
+                    </div>
+                    <div class="social-icons google">
+                        <a href="#"><img src="{% static "blog/img/google.png" %}">Entrar com Google</a>
+                    </div>
+                </div>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h5>Usuário</h5>
+                        <input class="input" type="text", name='username' required>
+                    </div>
+                </div>
+                <div class="input-div two">
+                    <div class="i">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h5>E-mail</h5>
+                        <input class="input" type="email" name='email' required>
+                    </div>
+                </div>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div>
+                        <h5>Senha</h5>
+                        <input class="input" type="password" name='password' required>
+                    </div>
+                </div>
+                <div class="input-div two">
+                    <div class="i">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div>
+                        <h5>Confirmar Senha</h5>
+                        <input class="input" type="password" name='confirm_password' required>
+                    </div>
+                </div>
+                <div class="terms">
+                    <input type="checkbox", name='terms' required>
+                    <label>Li e concordo com os </label><a id="action-modal">termos de uso.</a>
+                </div>
+                <div class="btn-container">
+                    <button type="submit" class="btn">Cadastrar</button>
+                </div>
+                <div class="account">
+                    <p>Já possui conta ?</p>
+                    <a href="http://127.0.0.1:8000">Entrar</a>
+                </div>
+                <!-- The Modal -->
+                <div id="modal-terms" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Termos e serviços</h2>
+                        <p>1. Aceitação dos Termos Ao acessar ou utilizar nosso site de blog, você concorda em cumprir e estar vinculado aos seguintes Termos de Uso. Se você não concordar com estes termos, por favor, não utilize este site.</p>
+                        <br>
+                        <p>2. Modificações dos Termos Reservamo-nos o direito de modificar ou atualizar estes Termos de Uso a qualquer momento. Quaisquer alterações entrarão em vigor imediatamente após a publicação no site. É sua responsabilidade revisar periodicamente estes termos para estar ciente de quaisquer modificações.</p>
+                        <br>
+                        <p>3. O uso do site deve ser para fins legais e de acordo com os Termos de Uso. Não é permitido publicar ou distribuir conteúdo ilegal, ofensivo, difamatório, fraudulento ou que infrinja direitos de terceiros. Não é permitido usar o site para promover ou realizar atividades comerciais não autorizadas. É proibido tentar obter acesso não autorizado a qualquer parte do site, sistemas ou redes.</p>
+                        <br>
+                        <p>4. Ao enviar qualquer conteúdo ao site, como postagens de blog ou comentários, você garante que é o proprietário ou tem permissão legal para usar e compartilhar esse conteúdo. Você concede ao site uma licença mundial, não exclusiva e livre de royalties para usar, modificar, distribuir e exibir o conteúdo enviado em nosso site e plataformas associadas.</p>
+                        <br>
+                        <p>5. Todo o conteúdo disponível no site, incluindo textos, imagens, gráficos, logotipos e software, é de nossa propriedade ou licenciado para uso. É proibido reproduzir, distribuir ou usar qualquer conteúdo sem nossa permissão expressa.</p>
+                        <br>
+                        <p>6. Sua privacidade é importante para nós. Para mais informações sobre como coletamos, usamos e protegemos seus dados, consulte nossa Política de Privacidade.</p>
+                        <br>
+                        <p>7. O site pode conter links para outros sites de terceiros. Não somos responsáveis pelo conteúdo ou práticas desses sites. O acesso a esses sites é de sua responsabilidade.</p>
+                        <br>
+                        <p>8. Não garantimos que o site estará sempre disponível ou livre de erros. Na medida máxima permitida por lei, não seremos responsáveis por quaisquer danos diretos, indiretos ou incidentais resultantes do uso ou incapacidade de usar o site.</p>
+                        <br>
+                        <p>9. Podemos suspender ou encerrar seu acesso ao site a qualquer momento, sem aviso prévio, se acreditarmos que você violou os Termos de Uso.</p>
+                        <br>
+                        <p>10. Os Termos de Uso serão regidos e interpretados de acordo com as leis do Brasil. Qualquer disputa decorrente destes termos será resolvida nos tribunais competentes.</p>
+                        <br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static "blog/js/main.js" %}"></script>
+</body>
+
+</html>

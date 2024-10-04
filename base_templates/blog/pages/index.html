@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <main class="main-content section-wrapper">
+    <div class="section-content-wide">
+      <div class="section-gap">
+
+        {% if page_obj %}
+          <div class="card-grid">
+            {% for post in page_obj %}
+              {% include 'blog/partials/_post-card.html' with i=forloop.counter0 %}
+            {% endfor %}
+          </div>
+          {% else %}
+          <h1 class="not-found center" style="margin-top: 160px;">Nenhum Post encontrado</h1>
+        {% endif %}
+
+
+
+      </div>
+    </div>
+  </main>
+{% endblock content %}

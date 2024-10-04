@@ -1,0 +1,170 @@
+{% load static %}<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .edit-profile-form {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            font-size: 24px;
+        }
+
+        .form-control:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        .description-area {
+            height: 150px;
+            resize: none;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 23px;
+        }
+
+        .btn-submit {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .photo-upload {
+            margin-bottom: 15px;
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+            border: 3px solid #007bff;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05); /* Aumenta levemente ao passar o mouse */
+            border-color: #0056b3; /* Altera a cor da borda */
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .placeholder {
+            display: none;
+            font-size: 16px;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        .show-placeholder {
+            display: block;
+        }
+    </style>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const file = input.files[0];
+            const imgElement = document.getElementById('profileImage');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgElement.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function triggerFileInput() {
+            document.getElementById('photo-upload').click();
+        }
+
+        window.onload = function() {
+            const imgElement = document.getElementById('profileImage');
+            const placeholder = document.getElementById('placeholder');
+
+            // Verifica se há uma imagem de perfil
+            if (imgElement.src.includes('foto_de_perfil_base.png')) {
+                placeholder.classList.add('show-placeholder');
+            }
+        };
+    </script>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" class="edit-profile-form">
+        {% csrf_token %}
+        
+        <div class="form-group photo-upload">
+            <img id="profileImage" src="{% if profile.photo %}{{ profile.photo.url }}{% else %}{% static 'blog/img/foto_de_perfil_base.png' %}{% endif %}" alt="Foto de perfil" class="profile-image" onclick="triggerFileInput()">
+            <input type="file" id="photo-upload" name="photo" accept="image/*" onchange="previewImage(event)">
+            <div id="placeholder" class="placeholder">Clique na imagem para mudar</div>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Nome de Usuário:</label>
+            <input type="text" name="username" value="{{ profile.name }}" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Descrição:</label>
+            <textarea name="description" maxlength="200" class="form-control description-area">{{ profile.description }}</textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Salvar</button>
+    </form>
+</body>
+</html>

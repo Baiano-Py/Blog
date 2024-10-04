@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Post</title>
+    <link rel="stylesheet" href="{% static 'blog/css/post.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <style>
+        /* Estiliza a pré-visualização da imagem */
+        .image-preview {
+            display: none;
+            max-width: 100%;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        /* Estiliza o botão de alternância da imagem */
+        .btn-toggle-image {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 10px;
+            transition: background-color 0.3s;
+            display: none;
+        }
+        .btn-toggle-image:hover {
+            background-color: #0056b3;
+        }
+        /* Estiliza o botão de voltar para a home */
+        .btn-home {
+            background-color: rgb(65, 163, 243);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .btn-home:hover {
+            background-color: rgb(9, 85, 184);
+        }
+        /* Contagem de caracteres no resumo */
+        .word-count {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Link para voltar à página inicial -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="{% url 'blog:home' %}" class="btn-home">Home</a>
+        </div>
+        <h1>Editar Post</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Campo para o título do post -->
+            <div class="form-group">
+                <label for="id_title">Título:</label>
+                <input type="text" id="id_title" maxlength="50" name="title" class="form-control" value="{{post.title}}" required>
+            </div>
+        
+            
+            <!-- Campo para o resumo do post -->
+            <div class="form-group">
+                <label for="id_excerpt">Resumo:</label>
+                <textarea id="id_excerpt" name="excerpt" class="form-control" rows="4" maxlength="150" required oninput="updateCharCount()">{{post.excerpt}}</textarea>
+                <div id="char-count" class="word-count">0/150 caracteres</div>
+            </div>
+            
+            <!-- Campo para o conteúdo do post -->
+            <div class="form-group">
+                <label for="id_content">Conteúdo:</label>
+                <textarea id="id_content" name="content" class="form-control" rows="10" required>{{post.content}}</textarea>
+            </div>
+            
+            <!-- Campo para upload da imagem de capa -->
+            <div class="form-group">
+                <label for="id_cover">Capa:</label>
+                <input type="file" id="id_cover" name="cover" class="form-control" accept="image/*" onchange="previewImage(event)">
+                <img id="image-preview" class="image-preview" src="{% if post.cover %}{{ post.cover.url }}{% else %}# {% endif %}" alt="Pré-visualização da imagem" style="display: {% if post.cover %}block{% else %}none{% endif %};">
+                <button type="button" id="toggle-button" class="btn-toggle-image" onclick="toggleImage()" style="display: {% if post.cover %}inline-block{% else %}none{% endif %};">Esconder Imagem</button>
+            </div>
+            
+            <!-- Opção para mostrar a capa no post -->
+            <div class="form-group">
+                <label for="id_cover_in_post_content">Mostrar Capa no Post:</label>
+                <input type="checkbox" id="id_cover_in_post_content" name="cover_in_post_content" value="True" {% if post.cover_in_post_content %}checked{% endif %}>
+            </div>
+            
+            <!-- Opção para publicar o post -->
+            <div class="form-group">
+                <label for="id_is_published">Publicar:</label>
+                <input type="checkbox" id="id_is_published" name="is_published" value="True" {% if post.is_published %}checked{% endif %}>
+            </div>
+
+            <!-- Seleção de categoria -->
+            <div class="form-group">
+                <label for="id_category">Categoria:</label>
+                <select id="id_category" name="category" class="form-control select1" required>
+                    <option value="">Selecione uma Categoria</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == post.category.id %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Seleção de tags -->
+            <div class="form-group">
+                <label for="id_tags">Tags:</label>
+                <select id="id_tags" name="tags" class="form-control select2" multiple required>
+                    <option value="">Selecione Tags para o post</option>
+                    {% for tag in tags %}
+                    <option value="{{ tag.id }}" {% if tag in post.tags.all %}selected{% endif %}>{{ tag.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Botão para salvar o post -->
+            <button type="submit" class="btn btn-primary">Salvar Post</button>
+        </form>
+    </div>
+
+    <!-- Inclusão de bibliotecas externas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Inicializa o Select2 para campos de seleção múltipla
+            $('.select2').select2({
+                width: '100%',
+                placeholder: "Selecione uma Categoria",
+                allowClear: true,
+                dropdownAutoWidth: true,
+                width: 'style'
+            });
+
+            // Inicializa o CKEditor no campo de conteúdo
+            CKEDITOR.replace('id_content');
+
+            // Gera automaticamente o slug com base no título
+            document.getElementById('id_title').addEventListener('input', function() {
+                let title = this.value;
+        
+                // Gera o slug removendo espaços e caracteres especiais, substituindo por "-"
+                let slug = title.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+        
+                // Atualiza o campo slug com o novo valor
+                document.getElementById('slug-input').value = slug;
+            });
+        });
+
+        // Função para pré-visualizar a imagem de capa
+        function previewImage(event) {
+            const imagePreview = document.getElementById('image-preview');
+            const file = event.target.files[0];
+            const toggleButton = document.getElementById('toggle-button');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    imagePreview.src = reader.result;
+                    imagePreview.style.display = 'none';
+                    toggleButton.style.display = 'inline-block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.style.display = 'none';
+                toggleButton.style.display = 'none';
+            }
+        }
+
+        // Função para alternar a visibilidade da imagem de pré-visualização
+        function toggleImage() {
+            const imagePreview = document.getElementById('image-preview');
+            const toggleButton = document.getElementById('toggle-button');
+
+            if (imagePreview.style.display === 'none' || imagePreview.style.display === '') {
+                imagePreview.style.display = 'block';
+                toggleButton.textContent = 'Esconder Imagem';
+            } else {
+                imagePreview.style.display = 'none';
+                toggleButton.textContent = 'Mostrar Imagem';
+            }
+        }
+
+        // Atualiza a contagem de caracteres no campo de resumo
+        function updateCharCount() {
+            const excerpt = document.getElementById('id_excerpt').value;
+            const charCount = excerpt.length;
+            document.getElementById('char-count').textContent = `${charCount}/150 caracteres`;
+        }
+
+        
+    </script>
+</body>
+</html>

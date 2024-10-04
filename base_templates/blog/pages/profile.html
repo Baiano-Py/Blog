@@ -1,0 +1,128 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<main class="main-content section-wrapper">
+  <!-- Profile Section -->
+  <div class="profile-header">
+    <div class="profile-container">
+      <div class="profile-details">
+        <div class="profile-photo" style="margin-left: -1100px;">
+          {% if profile.photo %}
+            <img src="{{ profile.photo.url }}" alt="Foto de perfil de {{ user.username }}" class="profile-image">
+          {% else %}
+            <img src="{% static 'blog/img/foto_de_perfil_base.png' %}" alt="Foto padrão de perfil" class="profile-image">
+          {% endif %}
+        </div>
+        <div class="profile-stats" style="margin-left: 750px; margin-top: -110px;">
+          <div class="stat-item">
+            <strong style="margin-left: 45px;">{{ post_count|default:"0" }}</strong>
+            <a href="{% url "blog:my_post" user.id%}"><span>Publicações</span></a>
+          </div>
+          <div class="stat-item">
+            <strong style="margin-left: 40px;">{{ user.profile.followers_count|default:"0" }}</strong>
+            <span>Seguidores</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-left: -220px; margin-top: 30px; font-size: 15px; letter-spacing: 1px">
+        <h1 class="profile-name">{{ profile.name|default:user.username }}</h1>
+      </div>
+      <div class="profile-description" style="margin-left: -220px;">
+        <p class="profile-description">{{ profile.description|default:"Esta pessoa ainda não tem uma descrição." }}</p>
+      </div>
+    </div>
+  </div>
+<div class="customize-button" style="margin-left: 1050px;">
+    {% if user == request.user %}
+        <button type="button" class="customize-profile-button" style="margin-left: 100px;" onclick="window.location.href='{% url 'blog:edit_profile' user.id %}'">Editar Perfil</button>
+    {% else %}
+    <form method="POST" action="{% if is_following %}{% url 'blog:un_follow_user' profile.user.id %}{% else %}{% url 'blog:follow_user' profile.user.id %}{% endif %}">
+      {% csrf_token %}
+      <button id="follow-btn" class="customize-profile-button" style="margin-left: 130px;" data-id="{{ profile.user.id }}">
+          {% if is_following %}Unfollow{% else %}Follow{% endif %}
+      </button>
+  </form>
+    {% endif %}
+</div>
+  
+</main>
+
+<style>
+  .profile-header {
+    background-color: #f5f5f5; /* Fundo suave */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Usar flexbox para alinhar à esquerda */
+    justify-content: center; /* Centraliza o conteúdo */
+  }
+
+  .profile-container {
+    max-width: 800px;
+    width: 100%; /* Para ocupar toda a largura disponível */
+  }
+
+  .profile-description {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #555;
+    overflow-wrap: break-word; /* Quebra palavras longas */
+    max-width: 700px; /* Ajuste o valor conforme necessário */
+    line-height: 1.5; /* Aumenta a altura da linha para melhor legibilidade */
+  }
+
+  .profile-photo {
+    margin-right: 20px; /* Espaçamento à direita da foto */
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px; /* Círculo perfeito */
+    border: 3px solid #007bff; /* Borda azul */
+  }
+
+  .profile-info {
+    flex: 1; /* Para ocupar o espaço restante */
+  }
+
+  .profile-name {
+    font-size: 2.5em;
+    margin: 10px 0;
+    color: #333;
+  }
+
+  .profile-stats {
+    display: flex;
+    gap: 40px; /* Espaçamento entre os itens */
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .stat-item strong {
+    display: block;
+    font-size: 1.5em;
+    color: #007bff; /* Cor dos números */
+  }
+
+  .customize-button {
+    margin-top: 20px;
+  }
+
+  .customize-profile-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007bff; /* Azul do botão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .customize-profile-button:hover {
+    background-color: #0056b3; /* Azul escuro ao passar o mouse */
+  }
+</style>
+{% endblock content %}
