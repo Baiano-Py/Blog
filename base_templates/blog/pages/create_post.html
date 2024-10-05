@@ -125,6 +125,12 @@
                     {% endfor %}
                 </select>
             </div>
+
+            {% if error_message %}
+            <script>
+                alert("{{ error_message }}");
+            </script>
+            {% endif %}
             
             <!-- Botão para salvar o post -->
             <button type="submit" class="btn btn-primary">Salvar Post</button>

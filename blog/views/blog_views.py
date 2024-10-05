@@ -97,6 +97,7 @@ def create_post(request):
     if not request.user.username == 'Visitante':
         categories = Category.objects.all()
         tags = Tag.objects.all()
+        error_message = None  # Variável para armazenar a mensagem de erro
         if request.method == 'POST':
             form = PostForm(request.POST, request.FILES)
             if form.is_valid():
@@ -107,15 +108,24 @@ def create_post(request):
                 if not post.slug:
                     post.slug = slugify(post.title)
 
-                post.save()
-                form.save_m2m()
-                return redirect('blog:home')
+                # Verifica se o slug já existe
+                if Post.objects.filter(slug=post.slug).exists():
+                    error_message = "Este slug já está em uso. Tente outro."
+                else:
+                    post.save()
+                    form.save_m2m()
+                    return redirect('blog:home')
             else:
                 print(form.errors)
         else:
             form = PostForm()
 
-        return render(request, 'blog/pages/create_post.html', {'form': form, 'categories': categories, 'tags': tags})
+        return render(request, 'blog/pages/create_post.html', {
+            'form': form,
+            'categories': categories,
+            'tags': tags,
+            'error_message': error_message  # Passa a mensagem de erro
+        })
     return redirect('blog:logout')
 
 def edit_post(request, post_id):
